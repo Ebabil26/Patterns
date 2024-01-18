@@ -1,64 +1,66 @@
+# Базовый класс для команд заказа
 class OrderCommand:
-    # Базовый класс для команд заказа
+    # Абстрактный метод для выполнения команды
     def execute(self):
-        # Абстрактный метод для выполнения команды
         pass
 
+# Команда добавления заказа
 class OrderAddCommand(OrderCommand):
-    # Команда добавления заказа
+    # Инициализация с идентификатором заказа
     def __init__(self, order_id):
-        # Инициализация с идентификатором заказа
         self.id = order_id
 
+    # Выполнение команды добавления заказа
     def execute(self):
-        # Выполнение команды добавления заказа
         print(f"Adding order: {self.id}")
 
+# Команда оплаты заказа
 class OrderPayCommand(OrderCommand):
-    # Команда оплаты заказа
+    # Инициализация с идентификатором заказа
     def __init__(self, order_id):
-        # Инициализация с идентификатором заказа
         self.id = order_id
 
+    # Выполнение команды оплаты заказа
     def execute(self):
-        # Выполнение команды оплаты заказа
         print(f"Paying order: {self.id}")
 
+# Команда отмены заказа
 class OrderCancelCommand(OrderCommand):
-    # Команда отмены заказа
+    # Инициализация с идентификатором заказа
     def __init__(self, order_id):
-        # Инициализация с идентификатором заказа
         self.id = order_id
 
+    # Выполнение команды отмены заказа
     def execute(self):
-        # Выполнение команды отмены заказа
         print(f"Cancel order: {self.id}")
 
+# Класс для обработки команд
 class CommandProcessor:
-    # Класс для обработки команд
+    # Инициализация очереди команд
     def __init__(self):
-        # Инициализация очереди команд
         self.queue = []
 
+    # Добавление команды в очередь
     def add_to_queue(self, order_command):
-        # Добавление команды в очередь
         self.queue.append(order_command)
 
+    # Выполнение всех команд в очереди
     def process_commands(self):
-        # Выполнение всех команд в очереди
         for command in self.queue:
             command.execute()
         # Очистка очереди после выполнения всех команд
         self.queue.clear()
 
+# Точка входа программы
 if __name__ == "__main__":
-    # Точка входа программы
-    command_processor = CommandProcessor()
     # Создание экземпляра класса обработчика команд
+    command_processor = CommandProcessor()
+    
+    # Добавление команд в очередь обработчика
     command_processor.add_to_queue(OrderAddCommand(1))
     command_processor.add_to_queue(OrderAddCommand(2))
     command_processor.add_to_queue(OrderPayCommand(2))
     command_processor.add_to_queue(OrderCancelCommand(1))
-    # Добавление команд в очередь обработчика
-    command_processor.process_commands()
+    
     # Выполнение всех команд в очереди
+    command_processor.process_commands()

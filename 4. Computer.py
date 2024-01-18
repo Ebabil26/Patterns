@@ -25,10 +25,12 @@ class Computer:
 # Создаем класс ComputerFacade, который предоставляет упрощенный интерфейс для работы с Computer.
 class ComputerFacade:
     def __init__(self, computer):
+        # Инициализируем фасад, передавая объект компьютера в качестве аргумента.
         self.computer = computer
 
     # Метод turn_on() включает компьютер, выполняя необходимые шаги.
     def turn_on(self):
+        # Вызываем различные методы компьютера для включения.
         self.computer.get_electric_shock()
         self.computer.make_sound()
         self.computer.show_loading_screen()
@@ -36,6 +38,7 @@ class ComputerFacade:
 
     # Метод turn_off() выключает компьютер, выполняя соответствующие действия.
     def turn_off(self):
+        # Вызываем различные методы компьютера для выключения.
         self.computer.close_everything()
         self.computer.pull_current()
         self.computer.sooth()

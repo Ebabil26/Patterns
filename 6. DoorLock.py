@@ -37,8 +37,8 @@ class SecuredDoor(Door):
 
 # Использование
 if __name__ == "__main__":
-    simple_door = SimpleDoor()
-    secured_door = SecuredDoor(simple_door)  # Создание защищенной двери
+    simple_door = SimpleDoor()  # Создание объекта простой двери
+    secured_door = SecuredDoor(simple_door)  # Создание защищенной двери с прокси
 
     secured_door.open_door()  # Попытка открыть дверь без введенного пароля
 

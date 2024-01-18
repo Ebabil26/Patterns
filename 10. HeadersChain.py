@@ -16,7 +16,8 @@ class AuthHeader(HeadersChain):
         # Добавление заголовка авторизации в список заголовков
         headers.append("Authorization: Bearer {}".format(self.token))
         if self.next:
-            return self.next.add_header(headers)  # Передача управления следующему элементу цепочки, если он есть
+            # Передача управления следующему элементу цепочки, если он есть
+            return self.next.add_header(headers)
         return headers  # Возврат сформированных заголовков
 
 # Класс для формирования заголовка Content-Type
@@ -29,7 +30,8 @@ class ContentTypeHeader(HeadersChain):
         # Добавление заголовка Content-Type в список заголовков
         headers.append("Content-Type: {}".format(self.content_type))
         if self.next:
-            return self.next.add_header(headers)  # Передача управления следующему элементу цепочки, если он есть
+            # Передача управления следующему элементу цепочки, если он есть
+            return self.next.add_header(headers)
         return headers  # Возврат сформированных заголовков
 
 # Пример использования шаблона "Цепочка Обязанностей" для формирования заголовков запроса

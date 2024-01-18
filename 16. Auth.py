@@ -3,7 +3,8 @@ class AuthState:
 
 class Authed(AuthState):
     def __init__(self, name):
-        self.name = name
+        # Класс для представления состояния "авторизован"
+        self.name = name  # Имя пользователя
 
 class Unauthed(AuthState):
     pass
@@ -38,19 +39,22 @@ if __name__ == "__main__":
     auth_presenter = AuthPresenter()
 
     # Выводим состояние авторизации и имя пользователя до входа
-    print(auth_presenter.is_authed)
-    print(auth_presenter.user_name)
+    print("Before login:")
+    print("Is Authenticated:", auth_presenter.is_authed)
+    print("User Name:", auth_presenter.user_name)
 
     # Выполняем вход пользователя с именем "Gleb"
     auth_presenter.login("Gleb")
 
     # Выводим состояние авторизации и имя пользователя после входа
-    print(auth_presenter.is_authed)
-    print(auth_presenter.user_name)
+    print("\nAfter login:")
+    print("Is Authenticated:", auth_presenter.is_authed)
+    print("User Name:", auth_presenter.user_name)
 
     # Выполняем выход пользователя
     auth_presenter.logout()
 
     # Выводим состояние авторизации и имя пользователя после выхода
-    print(auth_presenter.is_authed)
-    print(auth_presenter.user_name)
+    print("\nAfter logout:")
+    print("Is Authenticated:", auth_presenter.is_authed)
+    print("User Name:", auth_presenter.user_name)

@@ -1,4 +1,6 @@
+# Определение класса Burger
 class Burger:
+    # Вложенный класс Builder для пошагового построения бургера
     class Builder:
         def __init__(self):
             # Инициализация параметров ингредиентов по умолчанию (все False)
@@ -31,14 +33,14 @@ class Burger:
             # Возвращение экземпляра Burger с текущими ингредиентами Builder
             return Burger(self.cheese, self.pepperoni, self.lettuce, self.tomato)
 
+    # Конструктор класса Burger для инициализации бургера с определенными ингредиентами
     def __init__(self, cheese=False, pepperoni=False, lettuce=False, tomato=False):
-        # Инициализация бургера с определенными ингредиентами
         self.cheese = cheese
         self.pepperoni = pepperoni
         self.lettuce = lettuce
         self.tomato = tomato
 
-# Создание бургера с ингредиентами
+# Создание бургера с ингредиентами с использованием шаблона Builder
 burger = Burger.Builder().add_cheese().add_tomato().build()
 
 # Вывод информации о бургере

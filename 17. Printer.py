@@ -1,4 +1,3 @@
-# Через функцию:
 # Определяем тип стратегии печати как функцию, принимающую строку и возвращающую строку
 PrintStrategy = lambda s: str
 
@@ -29,7 +28,6 @@ printer2.print_str("LalAlA")
 printer3 = Printer(lambda s: s.upper())
 printer3.print_str("LalAlA")
 
-# Через класс:
 # Базовый класс стратегии печати
 class PrintStrategy:
     def strategy(self, text: str) -> str:
@@ -54,4 +52,3 @@ class Printer:
 # Создаем принтер с конкретной стратегией печати в нижнем регистре
 printer1 = Printer(LowerPrintStrategy())
 printer1.print_str("LalAlA")
-

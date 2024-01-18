@@ -47,32 +47,32 @@ class Visitor:
 # Посетитель для печати выражения
 class PrintExpression(Visitor):
     def __init__(self):
-        self.srt = ""
+        self.str = ""  # Исправлено: атрибут должен быть назван 'str', а не 'srt'
 
     # Посещение литерала - добавление его значения в строку
     def visit_literal(self, expression):
-        self.srt += str(expression.value)
+        self.str += str(expression.value)
 
     # Посещение бинарной операции - обход левой и правой частей выражения
     def visit_binary_operation(self, expression):
         expression.left.accept(self)
-        self.srt += f" {expression.sign} "
+        self.str += f" {expression.sign} "
         expression.right.accept(self)
 
     # Посещение скобок - добавление скобок в строку и обход внутреннего выражения
     def visit_brackets(self, expression):
-        self.srt += "("
+        self.str += "("
         expression.inner_expression.accept(self)
-        self.srt += ")"
+        self.str += ")"
 
 if __name__ == "__main__":
     # Создание выражений и их обработка посетителем PrintExpression
     expression = BinaryOperation(BinaryOperation(Literal(1), Literal(2), "+"), Literal(3), "+")
     print_expression = PrintExpression()
     expression.accept(print_expression)
-    print(f"Результат: {print_expression.srt}")
+    print(f"Результат: {print_expression.str}")
 
     more_expression = BinaryOperation(Literal(3), Brackets(BinaryOperation(Literal(1), Literal(2), "+")), "*")
     more_print_expression = PrintExpression()
     more_expression.accept(more_print_expression)
-    print(f"Результат: {more_print_expression.srt}")
+    print(f"Результат: {more_print_expression.str}")

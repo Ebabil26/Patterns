@@ -30,11 +30,12 @@ class Bitcoin(AccountsChain):
 
 
 def main():
+    # Создание объектов счетов
     bank = Bank("Bank", 300)
     paypal = Paypal("Paypal", 200)
     bitcoin = Bitcoin("Bitcoin", 700)
 
-    # Установим приоритеты оплаты: Bank -> Paypal -> Bitcoin
+    # Установка приоритетов оплаты: Bank -> Paypal -> Bitcoin
     bank.next_account = paypal
     paypal.next_account = bitcoin
 

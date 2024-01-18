@@ -1,7 +1,7 @@
 # Абстрактный класс работника
 class Employee:
     def earned_amount(self):
-        pass
+        pass  # Абстрактный метод, который должен быть реализован в подклассах
 
 # Класс дизайнера
 class Designer(Employee):
